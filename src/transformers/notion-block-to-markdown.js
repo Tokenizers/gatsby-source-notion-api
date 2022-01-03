@@ -142,6 +142,16 @@ exports.notionBlockToMarkdown = (block, lowerTitleLevel, depth = 0) =>
 			return acc.concat("---").concat(EOL_MD)
 		}
 
+		if (childBlock.type == "callout") {
+			const text = blockToString(childBlock.callout.text)
+			const emoji = childBlock.callout.icon.emoji
+			return acc
+				.concat("<aside>")
+				.concat(emoji)
+				.concat(text)
+				.concat("</aside>")
+		}
+
 		if (childBlock.type == "unsupported") {
 			return acc
 				.concat(`<!-- This block is not supported by Notion API yet. -->`)
