@@ -150,6 +150,7 @@ exports.notionBlockToMarkdown = (block, lowerTitleLevel, depth = 0) =>
 				.concat(emoji)
 				.concat(text)
 				.concat("</aside>")
+				.concat(EOL_MD)
 		}
 
 		if (childBlock.type == "unsupported") {
